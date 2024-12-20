@@ -1,0 +1,180 @@
+My approach was first i studied each of the exception to gain knowledge then breaking it down into its basic components and thinking through the problem logically. I then combined these ideas to come up with a clear, effective solution.
+
+ArithmeticException is an exception occurs when an illegal arithmetic operation is performed, such as division by zero.
+
+public class ArithmeticExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // Deliberately dividing by zero triggers the exception
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero: " + e.getMessage());// Catches the exception and handles it
+        }
+    }
+}
+
+
+
+
+Example 2: NullPointerException occurs when attempting to access a method or property of a null object.
+public class NullPointerExceptionExample {
+    public static void main(String[] args) {
+        try {
+            String str = null; // Assigning null to the string triggers the exception
+
+            System.out.println(str.length()); // Accessing a property on a null object
+        } catch (NullPointerException e) {
+            System.out.println("Null reference error: " + e.getMessage()); // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+
+ Example 3: ArrayIndexOutOfBoundsException occurs when trying to access an invalid index of an array.
+public class ArrayIndexOutOfBoundsExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int[] numbers = {1, 2, 3}; // An array of size 3
+            System.out.println(numbers[5]); // Accessing an invalid index triggers the exception
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid array index: " + e.getMessage()); //// Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+Example 4: FileNotFoundException: This exception occurs when trying to open a file that does not exist.
+import java.io.*;
+public class FileNotFoundExceptionExample {
+    public static void main(String[] args) {
+        try {
+            FileInputStream fis = new FileInputStream("nofile.txt"); // File that doesn't exist triggers the exception
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage()); // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+ 
+Example 5: IOException: This exception occurs for general input/output errors, such as reading from a missing file.
+import java.io.*;
+public class IOExceptionExample {
+    public static void main(String[] args) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("missing.txt")); // triggers the exception
+
+            System.out.println(reader.readLine());
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("An I/O error occurred: " + e.getMessage());  // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+Example 6: EOFException: This exception occurs when attempting to read beyond the end of a file.
+import java.io.*;
+public class EOFExceptionExample {
+    public static void main(String[] args) {
+        try (DataInputStream dis = new DataInputStream(new FileInputStream("data.txt"))) {
+            while (true) {
+                System.out.println(dis.readUTF()); // Read data until EOF triggers the exception
+
+            }
+        } catch (EOFException e) {
+            System.out.println("Reached end of file: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("An I/O error occurred: " + e.getMessage());  // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+
+Example 7: SQLException: This exception occurs for database-related errors, such as invalid SQL queries.
+import java.sql.*;
+public class SQLExceptionExample {
+    public static void main(String[] args) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:invalid_url", "user", "password"); // triggers the exception
+
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage()); // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+
+Example 8: ClassNotFoundException: This exception occurs when trying to load a class that cannot be found.
+public class ClassNotFoundExceptionExample {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.nonexistent.Class"); // triggers the exception
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found: " + e.getMessage()); // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+
+Example 9: ClassCastException: This exception occurs when trying to cast an object to an incompatible type.
+public class ClassCastExceptionExample {
+    public static void main(String[] args) {
+        try {
+            Object obj = new Integer(10); // Object of type Integer
+            String str = (String) obj; // Invalid cast
+        } catch (ClassCastException e) {
+            System.out.println("Invalid type cast: " + e.getMessage()); // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+Example 10: IllegalArgumentException: This exception occurs when an illegal argument is passed to a method.
+public class IllegalArgumentExceptionExample {
+    public static void main(String[] args) {
+        try {
+            Thread thread = new Thread();
+            thread.setPriority(11); // Invalid priority (valid range: 1-10) 
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid argument: " + e.getMessage()); // Catches the exception and handles it
+
+        }
+    }
+}
+
+
+
+Example 11: NumberFormatException: This exception occurs when trying to convert a string to a number with an invalid format.
+public class NumberFormatExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int number = Integer.parseInt("not_a_number"); // Invalid string for conversion
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format: " + e.getMessage()); // Catches the exception and handles it
+
+        }
+    }
+}
